@@ -1,14 +1,37 @@
 package org.example;
 
-public class MusicPlayer {
-    private Music music;
+import java.util.ArrayList;
+import java.util.List;
 
-    //IoC
-    public MusicPlayer(Music music) {
-        this.music = music;
+public class MusicPlayer {
+    private List<Music> musicList = new ArrayList<>();
+    private String name;
+    private Integer volume;
+
+    public MusicPlayer() {
+    }
+
+    public void setMusicList(List<Music> music) {
+        this.musicList = music;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getVolume() {
+        return volume;
+    }
+
+    public void setVolume(Integer volume) {
+        this.volume = volume;
     }
 
     public void playMusic(){
-        System.out.println("Playing now " + music.getSong());
+        musicList.stream().map(x -> x.getSong()).forEach(System.out::println);
     }
 }
