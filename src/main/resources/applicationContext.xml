@@ -22,7 +22,9 @@
     </bean>
 
     <bean id="musicPlayer"
-          class="org.example.MusicPlayer">
+          class="org.example.MusicPlayer"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy">
           <property name="musicList">
             <list>
                 <ref bean="rockBean" />

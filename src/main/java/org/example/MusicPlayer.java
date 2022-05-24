@@ -8,7 +8,11 @@ public class MusicPlayer {
     private String name;
     private Integer volume;
 
-    public MusicPlayer() {
+    private MusicPlayer() {
+    }
+
+    public static MusicPlayer getMusicPlayer(){
+        return new MusicPlayer();
     }
 
     public void setMusicList(List<Music> music) {
@@ -33,5 +37,13 @@ public class MusicPlayer {
 
     public void playMusic(){
         musicList.stream().map(x -> x.getSong()).forEach(System.out::println);
+    }
+
+    public void doMyInit(){
+        System.out.println("Создал плеер");
+    }
+
+    public void doMyDestroy(){
+        System.out.println("Death...");
     }
 }
