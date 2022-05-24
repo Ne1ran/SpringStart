@@ -1,16 +1,13 @@
 package org.example;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import java.util.ArrayList;
+import java.util.Random;
 
-@Component
 public class MusicPlayer {
-    private Music music;
+    private ArrayList<Music> musicList;
 
-    @Autowired
-    public MusicPlayer(@Qualifier("rockMusic") Music music) {
-        this.music = music;
+    public MusicPlayer(ArrayList<Music> music) {
+        this.musicList = music;
     }
 
     public void doMyInit(){
@@ -22,6 +19,9 @@ public class MusicPlayer {
     }
 
     public String playMusic() {
-        return "Playing " + music.getSong();
+        Random random = new Random();
+        int randomInt = random.nextInt(3);
+        String tempString = "";
+        return musicList.get(randomInt).getSong();
     }
 }
