@@ -1,42 +1,27 @@
 package org.example;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class MusicPlayer {
-    private List<Music> musicList = new ArrayList<>();
-    private String name;
-    private Integer volume;
+    private Music music;
 
-    private MusicPlayer() {
+    public MusicPlayer() {
     }
 
-    public static MusicPlayer getMusicPlayer(){
-        return new MusicPlayer();
+    public Music getMusic() {
+        return music;
     }
 
-    public void setMusicList(List<Music> music) {
-        this.musicList = music;
+    public void setMusic(Music music) {
+        this.music = music;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getVolume() {
-        return volume;
-    }
-
-    public void setVolume(Integer volume) {
-        this.volume = volume;
-    }
-
-    public void playMusic(){
-        musicList.stream().map(x -> x.getSong()).forEach(System.out::println);
+    public void playMusic(Music music){
+        System.out.println(music.getSong());
     }
 
     public void doMyInit(){
